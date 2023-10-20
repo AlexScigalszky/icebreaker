@@ -13,9 +13,10 @@
         <p class="text-center">Click the button to get a random icebreaker question.</p>
         <div class="text-center my-4">
             <button class="btn btn-primary" id="getQuestionButton">Get Question</button>
+            <button class="btn btn-link-secondary" id="toggleThemeButton">Toggle Theme</button>
         </div>
         <div class="text-center">
-            <p id="questionDisplay" class="h2"></p>
+            <p id="questionDisplay"></p>
         </div>
     </div>
 
@@ -92,6 +93,8 @@
 
         const getQuestionButton = document.getElementById('getQuestionButton');
         const questionDisplay = document.getElementById('questionDisplay');
+        const toggleThemeButton = document.getElementById('toggleThemeButton');
+        const themeLink = document.getElementById('theme-link');
 
         // Function to get a random question
         function getRandomQuestion() {
@@ -100,7 +103,17 @@
             questionDisplay.textContent = randomQuestion;
         }
 
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                themeLink.href = "https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css";
+            } else {
+                themeLink.href = "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css";
+            }
+        }
+
         getQuestionButton.addEventListener('click', getRandomQuestion);
+        toggleThemeButton.addEventListener('click', toggleTheme);
     </script>
 </body>
 </html>
