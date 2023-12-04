@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
     .corner {
       position: absolute;
       color: #fff;
-      font-size: 2rem;
-      padding: 20px;
+      font-size: 1.2rem;
+      padding: 10px;
       border-color: #611;
       border-style: dashed;
       border-radius: 20px;
@@ -44,12 +44,45 @@
       bottom: 30%;
       right: 30%;
     }
+
+    button {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
-  <div class="corner top-left">Name</div>
-  <div class="corner top-right">Favorite Place</div>
-  <div class="corner bottom-left">Favorite color</div>
-  <div class="corner bottom-right">Hobbie</div>
+  <div class="corner top-left" id="name">Name</div>
+  <div class="corner top-right" id="place">Favorite Place</div>
+  <div class="corner bottom-left" id="color">Favorite Color</div>
+  <div class="corner bottom-right" id="hobby">Hobby</div>
+
+  <button onclick="changeValues()">Change Values</button>
+
+  <script>
+    var groups = [
+      ["Name", "Favorite Color", "Favorite Food", "Hobby"],
+      ["Name", "Favorite Destination", "Preferred Music Genre", "Favorite Movie"],
+      ["Name", "Book or Author", "Favorite Sport", "Preferred Pet"],
+      ["Name", "Creative Hobby", "Preferred Clothing Style", "Inspiring Quote"]
+    ];
+
+    function changeValues() {
+      var randomGroup = getRandomElement(groups);
+
+      document.getElementById("name").innerText = randomGroup[0];
+      document.getElementById("place").innerText = randomGroup[1];
+      document.getElementById("color").innerText = randomGroup[2];
+      document.getElementById("hobby").innerText = randomGroup[3];
+    }
+
+    function getRandomElement(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+  </script>
 </body>
 </html>
