@@ -26,23 +26,23 @@
     }
 
     .top-left {
-      top: 20%;
-      left: 20%;
+      top: 30%;
+      left: 30%;
     }
 
     .top-right {
-      top: 20%;
-      right: 20%;
+      top: 30%;
+      right: 30%;
     }
 
     .bottom-left {
-      bottom: 20%;
-      left: 20%;
+      bottom: 30%;
+      left: 30%;
     }
 
     .bottom-right {
-      bottom: 20%;
-      right: 20%;
+      bottom: 30%;
+      right: 30%;
     }
 
     button {
@@ -87,17 +87,18 @@
       ["Name", "Favorite Music Artist", "Preferred Style of Art", "Dream Pet"]
     ];
 
+    var currentIndex = 0;
+
     function changeValues() {
-      var randomGroup = getRandomElement(groups);
+      var currentGroup = groups[currentIndex];
 
-      document.getElementById("name").innerText = randomGroup[0];
-      document.getElementById("place").innerText = randomGroup[1];
-      document.getElementById("color").innerText = randomGroup[2];
-      document.getElementById("hobby").innerText = randomGroup[3];
-    }
+      document.getElementById("name").innerText = currentGroup[0];
+      document.getElementById("place").innerText = currentGroup[1];
+      document.getElementById("color").innerText = currentGroup[2];
+      document.getElementById("hobby").innerText = currentGroup[3];
 
-    function getRandomElement(array) {
-      return array[Math.floor(Math.random() * array.length)];
+      // Avanza al siguiente grupo
+      currentIndex = (currentIndex + 1) % groups.length;
     }
   </script>
 </body>
