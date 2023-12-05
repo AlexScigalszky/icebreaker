@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Theatre Script</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #script-container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      white-space: pre-wrap;
+    }
+
+    #next-line-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #611;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="script-container">
+    <h2>Radio Theatre Script</h2>
+    <div id="script"></div>
+    <button id="next-line-btn" onclick="loadNextLine()">Next Line</button>
+  </div>
+
+  <script>
+    const scriptContainer = document.getElementById('script');
+    const nextLineBtn = document.getElementById('next-line-btn');
+
+    // Script de radio teatro para 4 personas
+    const radioTheatreScript = `
+      Title: "Mystery at Midnight"
+      
+      Characters:
+      1. Narrator
+      2. Detective Johnson
+      3. Mrs. Anderson
+      4. Mr. Smith
+
+      [Scene 1 - Detective's Office]
+
+      Narrator: It was a dark and stormy night. Detective Johnson sat in his dimly lit office,
+                contemplating his latest case.
+
+      Detective Johnson: (Thoughtfully) There's something fishy about the Andersons' mansion.
+                          I need to investigate.
+
+      [Scene 2 - Andersons' Mansion]
+
+      Mrs. Anderson: (Nervously) Detective, thank you for coming. Our priceless painting has
+                      disappeared.
+
+      Detective Johnson: (Confidently) Don't worry, Mrs. Anderson. I'll get to the bottom of this.
+
+      [Scene 3 - Unveiling the Mystery]
+
+      Mr. Smith: (Surprisingly) I overheard Mrs. Anderson talking to a mysterious figure
+                   on the night of the theft.
+
+      Detective Johnson: (Excitedly) Tell me everything, Mr. Smith!
+
+      [Scene 4 - Conclusion]
+
+      Narrator: And so, Detective Johnson solved the mystery, revealing the true culprit
+                behind the stolen painting.
+
+      (End of Script)
+    `;
+
+    let scriptLines = radioTheatreScript.split('\n');
+    let currentLineIndex = 0;
+
+    function loadNextLine() {
+      if (currentLineIndex < scriptLines.length) {
+        scriptContainer.textContent += scriptLines[currentLineIndex] + '\n';
+        currentLineIndex++;
+      } else {
+        scriptContainer.textContent = 'End of Script';
+        nextLineBtn.disabled = true;
+      }
+    }
+  </script>
+
+</body>
+</html>
