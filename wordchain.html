@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Chain Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #game-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      display: none; /* Ocultar inicialmente la frase completa */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-container">
+    <h2>Word Chain Game</h2>
+    <p>Each player adds a word to create a sentence. First, repeat the entire sentence and then add your word.</p>
+
+    <div>
+      <input type="text" id="wordInput" placeholder="Your word">
+      <button onclick="addWord()">Add Word</button>
+    </div>
+
+    <div id="result"></div>
+
+    <button onclick="showSentence()">Show Sentence</button>
+  </div>
+
+  <script>
+    let sentence = '';
+
+    function addWord() {
+      const wordInput = document.getElementById('wordInput');
+      const resultContainer = document.getElementById('result');
+
+      const newWord = wordInput.value.trim();
+
+      if (newWord === '') {
+        alert('Please enter a valid word.');
+        return;
+      }
+
+      if (sentence !== '') {
+        sentence += ' ';
+      }
+
+      sentence += newWord;
+      resultContainer.innerText = `Current Sentence: ${sentence}`;
+
+      // Clear the input for the next word
+      wordInput.value = '';
+    }
+
+    function showSentence() {
+      const resultContainer = document.getElementById('result');
+      resultContainer.style.display = 'block'; // Mostrar la frase completa
+    }
+  </script>
+
+</body>
+</html>
