@@ -67,7 +67,11 @@
       <button onclick="addWord()">Add Word</button>
     </div>
 
-    <div id="result"></div>
+    <div id="result-box">
+      <h3>Final Sentence</h3>
+      <div id="result"></div>
+    </div>
+    <br/>
 
     <button onclick="showSentence()">Show Sentence</button>
   </div>
@@ -78,6 +82,7 @@
     function addWord() {
       const wordInput = document.getElementById('wordInput');
       const resultContainer = document.getElementById('result');
+      const resultContainerBox = document.getElementById('result-box');
 
       const newWord = wordInput.value.trim();
 
@@ -99,8 +104,8 @@
 
     function showSentence() {
       const resultContainer = document.getElementById('result');
-      resultContainer.innerText = `Final Sentence: ${sentence}`;
-      resultContainer.style.display = 'block'; // Mostrar la frase completa
+      resultContainer.innerText = `${sentence}`;
+      resultContainerBox.style.display = 'block'; // Mostrar la frase completa
     }
   </script>
 
