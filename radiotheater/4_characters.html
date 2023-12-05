@@ -21,9 +21,17 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       white-space: pre-wrap;
+      text-align: left;
+      direction: rtl;
     }
 
-    #next-line-btn {
+    input {
+      margin-bottom: 10px;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    #create-btn {
       padding: 10px 20px;
       font-size: 16px;
       background-color: #611;
@@ -36,67 +44,78 @@
 </head>
 <body>
 
-  <div id="script-container">
-    <h2>Radio Theatre Script</h2>
-    <div id="script"></div>
-    <button id="next-line-btn" onclick="loadNextLine()">Next Line</button>
+  <div>
+    <label for="detectiveName">Detective's Name: </label>
+    <input type="text" id="detectiveName" placeholder="Detective's Name">
+    <br>
+    <label for="mrsAndersonName">Mrs. Anderson's Name: </label>
+    <input type="text" id="mrsAndersonName" placeholder="Mrs. Anderson's Name">
+    <br>
+    <label for="mrSmithName">Mr. Smith's Name: </label>
+    <input type="text" id="mrSmithName" placeholder="Mr. Smith's Name">
+    <br>
+    <button id="create-btn" onclick="createScript()">Create</button>
   </div>
 
+  <div id="script-container"></div>
+
   <script>
-    const scriptContainer = document.getElementById('script');
-    const nextLineBtn = document.getElementById('next-line-btn');
+    function createScript() {
+      const scriptContainer = document.getElementById('script');
+      const detectiveNameInput = document.getElementById('detectiveName');
+      const mrsAndersonNameInput = document.getElementById('mrsAndersonName');
+      const mrSmithNameInput = document.getElementById('mrSmithName');
 
-    // Script de radio teatro para 4 personas
-    const radioTheatreScript = `
-      Title: "Mystery at Midnight"
-      
-      Characters:
-      1. Narrator
-      2. Detective Johnson
-      3. Mrs. Anderson
-      4. Mr. Smith
+      let detectiveName = 'Detective Johnson';
+      let mrsAndersonName = 'Mrs. Anderson';
+      let mrSmithName = 'Mr. Smith';
 
-      [Scene 1 - Detective's Office]
+      // Script de radio teatro para 4 personas
+      const radioTheatreScript = `
+        Title: "Mystery at Midnight"
+        
+        Characters:
+        1. Narrator
+        2. ${detectiveName}
+        3. ${mrsAndersonName}
+        4. ${mrSmithName}
 
-      Narrator: It was a dark and stormy night. Detective Johnson sat in his dimly lit office,
-                contemplating his latest case.
+        [Scene 1 - Detective's Office]
 
-      Detective Johnson: (Thoughtfully) There's something fishy about the Andersons' mansion.
-                          I need to investigate.
+        Narrator: It was a dark and stormy night. ${detectiveName} sat in his dimly lit office,
+                  contemplating his latest case.
 
-      [Scene 2 - Andersons' Mansion]
+        ${detectiveName}: (Thoughtfully) There's something fishy about the Andersons' mansion.
+                            I need to investigate.
 
-      Mrs. Anderson: (Nervously) Detective, thank you for coming. Our priceless painting has
-                      disappeared.
+        [Scene 2 - Andersons' Mansion]
 
-      Detective Johnson: (Confidently) Don't worry, Mrs. Anderson. I'll get to the bottom of this.
+        ${mrsAndersonName}: (Nervously) ${detectiveName}, thank you for coming. Our priceless painting has
+                        disappeared.
 
-      [Scene 3 - Unveiling the Mystery]
+        ${detectiveName}: (Confidently) Don't worry, ${mrsAndersonName}. I'll get to the bottom of this.
 
-      Mr. Smith: (Surprisingly) I overheard Mrs. Anderson talking to a mysterious figure
-                   on the night of the theft.
+        [Scene 3 - Unveiling the Mystery]
 
-      Detective Johnson: (Excitedly) Tell me everything, Mr. Smith!
+        ${mrSmithName}: (Surprisingly) I overheard ${mrsAndersonName} talking to a mysterious figure
+                     on the night of the theft.
 
-      [Scene 4 - Conclusion]
+        ${detectiveName}: (Excitedly) Tell me everything, ${mrSmithName}!
 
-      Narrator: And so, Detective Johnson solved the mystery, revealing the true culprit
-                behind the stolen painting.
+        [Scene 4 - Conclusion]
 
-      (End of Script)
-    `;
+        Narrator: And so, ${detectiveName} solved the mystery, revealing the true culprit
+                  behind the stolen painting.
 
-    let scriptLines = radioTheatreScript.split('\n');
-    let currentLineIndex = 0;
+        (End of Script)
+      `;
 
-    function loadNextLine() {
-      if (currentLineIndex < scriptLines.length) {
-        scriptContainer.textContent += scriptLines[currentLineIndex] + '\n';
-        currentLineIndex++;
-      } else {
-        scriptContainer.textContent = 'End of Script';
-        nextLineBtn.disabled = true;
-      }
+      // Reemplazar los nombres de los personajes en cada línea del script
+      let modifiedScript = radioTheatreScript.replace('${detectiveName}', detectiveNameInput.value || detectiveName);
+      modifiedScript = modifiedScript.replace('${mrsAndersonName}', mrsAndersonNameInput.value || mrsAndersonName);
+      modifiedScript = modifiedScript.replace('${mrSmithName}', mrSmithNameInput.value || mrSmithName);
+
+      scriptContainer.textContent = modifiedScript;
     }
   </script>
 
