@@ -111,9 +111,9 @@
       `;
 
       // Reemplazar los nombres de los personajes en cada línea del script
-      let modifiedScript = radioTheatreScript.replace('${detectiveName}', detectiveNameInput.value || detectiveName);
-      modifiedScript = modifiedScript.replace('${mrsAndersonName}', mrsAndersonNameInput.value || mrsAndersonName);
-      modifiedScript = modifiedScript.replace('${mrSmithName}', mrSmithNameInput.value || mrSmithName);
+      let modifiedScript = radioTheatreScript.replace(detectiveName, detectiveNameInput.value || detectiveName);
+      modifiedScript = modifiedScript.replace(mrsAndersonName, mrsAndersonNameInput.value || mrsAndersonName);
+      modifiedScript = modifiedScript.replace(mrSmithName, mrSmithNameInput.value || mrSmithName);
 
       scriptContainer.textContent = modifiedScript;
     }
