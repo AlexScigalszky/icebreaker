@@ -7,7 +7,8 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #1a1a1a;
+      color: #fff;
       text-align: center;
       padding: 20px;
     }
@@ -15,7 +16,7 @@
     #game-container {
       max-width: 600px;
       margin: auto;
-      background-color: #fff;
+      background-color: #333;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,6 +26,11 @@
       padding: 10px;
       font-size: 16px;
       margin-right: 10px;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      outline: none;
     }
 
     button {
@@ -40,7 +46,11 @@
     #result {
       margin-top: 20px;
       font-weight: bold;
-      display: none; /* Ocultar inicialmente la frase completa */
+      display: none;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #3498db;
     }
   </style>
 </head>
@@ -51,7 +61,7 @@
     <p>Each player adds a word to create a sentence. First, repeat the entire sentence and then add your word.</p>
 
     <div>
-      <input type="text" id="wordInput" placeholder="Your word">
+      <input type="text" id="wordInput" placeholder="Your word" onkeydown="if(event.key==='Enter'){addWord(); return false;}">
       <button onclick="addWord()">Add Word</button>
     </div>
 
@@ -87,6 +97,7 @@
 
     function showSentence() {
       const resultContainer = document.getElementById('result');
+      resultContainer.innerText = `Final Sentence: ${sentence}`;
       resultContainer.style.display = 'block'; // Mostrar la frase completa
     }
   </script>
