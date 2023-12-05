@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dad Jokes Galore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #jokes-container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #joke-display {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    #next-joke-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="jokes-container">
+    <h2>Dad Jokes Galore</h2>
+    <div id="joke-display"></div>
+    <button id="next-joke-btn" onclick="fetchNextJoke()">Next Joke</button>
+  </div>
+
+  <script>
+    const jokeDisplay = document.getElementById('joke-display');
+    const nextJokeBtn = document.getElementById('next-joke-btn');
+    let currentJokeIndex = 0;
+    let jokes = [];
+
+    async function fetchJokes() {
+      try {
+        const response = await fetch('https://icanhazdadjoke.com/search?limit=150', {
+          headers: {
+            'Accept': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+
+        if (data.results) {
+          jokes = data.results;
+          displayJoke();
+        }
+      } catch (error) {
+        console.error('Error fetching jokes:', error.message);
+      }
+    }
+
+    function displayJoke() {
+      jokeDisplay.textContent = jokes[currentJokeIndex].joke;
+    }
+
+    function fetchNextJoke() {
+      currentJokeIndex = (currentJokeIndex + 1) % jokes.length;
+      displayJoke();
+    }
+
+    fetchJokes();
+  </script>
+
+</body>
+</html>
