@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tongue Twisters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #twister-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #twister {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    #next-twister-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="twister-container">
+    <h2>Tongue Twisters</h2>
+    <div id="twister"></div>
+    <button id="next-twister-btn" onclick="loadNextTwister()">Next Tongue Twister</button>
+  </div>
+
+  <script>
+    const twisterContainer = document.getElementById('twister');
+    const nextTwisterBtn = document.getElementById('next-twister-btn');
+
+    // Lista de trabalenguas
+    const tongueTwisters = [
+      'She sells seashells by the seashore.',
+      'How can a clam cram in a clean cream can?',
+      'Unique New York, Unique New York.',
+      'Red lorry, yellow lorry.',
+      'Black bug bleeds black blood.',
+      'Six slippery snails slid slowly seaward.',
+      'Peter Piper picked a peck of pickled peppers.',
+      'Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair.',
+      'Irish wristwatch, Swiss wristwatch.',
+      'A proper copper coffee pot.',
+      'Sally sells sea shells by the sea shore.',
+      'The great Greek grape growers grow great Greek grapes.',
+      'Three thin thinkers thinking thick thoughtful thoughts.',
+      'How much wood would a woodchuck chuck if a woodchuck could chuck wood?',
+      'I saw Susie sitting in a shoeshine shop.',
+      'A black bug bleeds black blood.',
+      'Red lorry, green lorry.',
+      'Sheena leads, Sheila needs.',
+      'Six slippery snails, slid slowly seaward.',
+      'I wish to wish the wish you wish to wish.'
+    ];
+
+    let currentTwisterIndex = 0;
+
+    function loadNextTwister() {
+      twisterContainer.textContent = tongueTwisters[currentTwisterIndex];
+      currentTwisterIndex = (currentTwisterIndex + 1) % tongueTwisters.length;
+    }
+  </script>
+
+</body>
+</html>
