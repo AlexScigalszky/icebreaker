@@ -43,17 +43,18 @@
       cursor: pointer;
     }
 
-    #result {
+    #result-box {
+      display: none;
       margin-top: 20px;
-      font-weight: bold;
       background-color: #222;
       padding: 10px;
       border-radius: 5px;
       border: 2px solid #3498db;
     }
-    #result-box {
-      display: none;
-    } 
+
+    #result {
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -80,13 +81,19 @@
   <script>
     let sentence = '';
     const resultContainerBox = document.getElementById('result-box');
-    resultContainerBox.style.display = 'none'; 
 
     function addWord() {
       const wordInput = document.getElementById('wordInput');
       const resultContainer = document.getElementById('result');
 
-      const newWord = wordInput.value.trim();
+      const newWords = wordInput.value.trim().split(/\s+/); // Dividir la entrada en palabras
+
+      if (newWords.length !== 1 || newWords[0] === '') {
+        alert('Please enter a single valid word.');
+        return;
+      }
+    
+      const newWord = newWords[0];
 
       if (newWord === '') {
         alert('Please enter a valid word.');
