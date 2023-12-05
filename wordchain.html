@@ -58,10 +58,12 @@
 
   <div id="game-container">
     <h2>Word Chain Game</h2>
-    <p>Each player adds a word to create a sentence. First, repeat the entire sentence and then add your word.</p>
+    <p>Each player adds a word to create a sentence.</p>
+    <p>First, repeat the entire sentence and then add your word.</p>
 
     <div>
       <input type="text" id="wordInput" placeholder="Your word" onkeydown="if(event.key==='Enter'){addWord(); return false;}">
+      <br/>
       <button onclick="addWord()">Add Word</button>
     </div>
 
