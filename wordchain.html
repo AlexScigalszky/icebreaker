@@ -63,7 +63,6 @@
 
     <div>
       <input type="text" id="wordInput" placeholder="Your word" onkeydown="if(event.key==='Enter'){addWord(); return false;}">
-      <br/>
       <button onclick="addWord()">Add Word</button>
     </div>
 
@@ -78,11 +77,12 @@
 
   <script>
     let sentence = '';
+    const resultContainerBox = document.getElementById('result-box');
+    resultContainerBox.style.display = 'none'; 
 
     function addWord() {
       const wordInput = document.getElementById('wordInput');
       const resultContainer = document.getElementById('result');
-      const resultContainerBox = document.getElementById('result-box');
 
       const newWord = wordInput.value.trim();
 
