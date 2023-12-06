@@ -72,23 +72,23 @@
 <body>
   <h1>Radio Theater</h1>
   <div class="form">
-    <label for="jsonSelector">Select JSON Script:</label>
+    <label for="jsonSelector">Participants:</label>
     <select id="jsonSelector"></select>
-    <button id="create-btn" onclick="createScript()">Create</button>
+    <button id="create-btn" onclick="createScript()">Load Script</button>
   </div>
 
   <div id="script-container"></div>
 
   <script>
     const scriptFiles = [
-      "2.json",
-      "4.json",
-      "4_simple.json",
-      "5.json",
-      "6.json",
-      "7.json",
-      "8.json",
-      "10.json"
+      {name: "2", file: "2.json",},
+      {name: "4", file: "4.json",},
+      {name: "4 Simple", file: "4_simple.json",},
+      {name: "5", file: "5.json",},
+      {name: "6", file: "6.json",},
+      {name: "7", file: "7.json",},
+      {name: "8", file: "8.json",},
+      {name: "10", file: "10.json"}
     ];
 
     const jsonSelector = document.getElementById('jsonSelector');
@@ -96,7 +96,7 @@
     scriptFiles.forEach((file, index) => {
       const option = document.createElement('option');
       option.value = index;
-      option.textContent = file;
+      option.textContent = file.name;
       jsonSelector.appendChild(option);
     });
 
@@ -110,7 +110,7 @@
       }
 
       const selectedFile = scriptFiles[selectedFileIndex];
-      const filePath = `${selectedFile}`; // Agrega la carpeta correcta si es necesario
+      const filePath = `${selectedFile.file}`; // Agrega la carpeta correcta si es necesario
 
       fetch(filePath)
         .then(response => response.json())
