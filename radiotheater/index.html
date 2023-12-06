@@ -25,7 +25,7 @@
     }
 
     .character-line {
-      margin: 5px 0;
+      margin: 1rem 0;
     }
 
     .character-1 { color: #3498db; }
@@ -63,6 +63,9 @@
     }
     .form {
         padding: 2rem;
+    }
+    .speaker {
+      font-weight: bold;
     }
   </style>
 </head>
@@ -145,7 +148,7 @@
               const lineElement = document.createElement('p');
               lineElement.classList.add('character-line');
               lineElement.classList.add(`character-${dialogue.characterIndex}`);
-              lineElement.textContent = `${scriptData.characters[dialogue.characterIndex-1]}: ${dialogue.line}`;
+              lineElement.textContent = `<div class="speaker">${scriptData.characters[dialogue.characterIndex-1]}:</div>${dialogue.line}`;
               sceneContainer.appendChild(lineElement);
             });
 
