@@ -22,7 +22,7 @@
         {"characterIndex": 6, "line": "I can't believe this. Let's go to the hospital."},
         {"characterIndex": 7, "line": "I'm here for anything you need, John."},
         {"characterIndex": 8, "line": "I heard the news. I'll join you at the hospital."},
-        {"characterIndex": 2, "line": "Let's get there quickly. I hope he's okay."},
+        {"characterIndex": 2, "line": "Let's get there quickly. I hope he's okay."}
       ]
     },
     {
@@ -37,7 +37,7 @@
         {"characterIndex": 6, "line": "I brought some food. You all must be hungry."},
         {"characterIndex": 7, "line": "Let's hope for the best. Hospitals are tough."},
         {"characterIndex": 8, "line": "I can't believe this happened. Robert is strong."},
-        {"characterIndex": 2, "line": "We need to stay positive and support each other."},
+        {"characterIndex": 2, "line": "We need to stay positive and support each other."}
       ]
     },
     {
@@ -51,7 +51,7 @@
         {"characterIndex": 6, "line": "I made a casserole. It's in the kitchen."},
         {"characterIndex": 7, "line": "I'm glad he's going to be okay."},
         {"characterIndex": 8, "line": "He's a tough old man. We'll support him."},
-        {"characterIndex": 2, "line": "Family is everything. We'll get through this."},
+        {"characterIndex": 2, "line": "Family is everything. We'll get through this."}
       ]
     },
     {
@@ -66,7 +66,7 @@
         {"characterIndex": 6, "line": "We're here for you, John. Always."},
         {"characterIndex": 7, "line": "Let's hope for a speedy recovery."},
         {"characterIndex": 8, "line": "He'll be back on his feet in no time."},
-        {"characterIndex": 2, "line": "To family and a quick recovery for grandpa."},
+        {"characterIndex": 2, "line": "To family and a quick recovery for grandpa."}
       ]
     },
     {
@@ -81,7 +81,7 @@
         {"characterIndex": 5, "line": "That's awful. People need to drive responsibly."},
         {"characterIndex": 7, "line": "We'll keep you updated on the investigation."},
         {"characterIndex": 6, "line": "If you need anything from us, let us know."},
-        {"characterIndex": 1, "line": "Thank you, Officer. We appreciate your help."},
+        {"characterIndex": 1, "line": "Thank you, Officer. We appreciate your help."}
       ]
     }
   ]
