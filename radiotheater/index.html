@@ -117,7 +117,7 @@
           charactersContainer.classList.add('scene-container');
 
           const charactersTitle = document.createElement('h3');
-          charactersTitle.textContent = "Presentación de Personajes";
+          charactersTitle.textContent = "Characters Presentation";
           charactersContainer.appendChild(charactersTitle);
 
           scriptData.characters.forEach((character, index) => {
@@ -136,14 +136,14 @@
             sceneContainer.classList.add('scene-container');
 
             const sceneTitle = document.createElement('h3');
-            sceneTitle.textContent = `Escena N° ${index + 1}: ${scene.title}`;
+            sceneTitle.textContent = `Scena N° ${index + 1}: ${scene.title}`;
             sceneContainer.appendChild(sceneTitle);
 
             scene.dialogues.forEach((dialogue) => {
               const lineElement = document.createElement('p');
               lineElement.classList.add('character-line');
               lineElement.classList.add(`character-${dialogue.characterIndex}`);
-              lineElement.textContent = `${dialogue.line}`;
+              lineElement.textContent = `${scriptData.characters[dialogue.characterIndex]}: ${dialogue.line}`;
               sceneContainer.appendChild(lineElement);
             });
 
