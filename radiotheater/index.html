@@ -148,7 +148,7 @@
               const lineElement = document.createElement('p');
               lineElement.classList.add('character-line');
               lineElement.classList.add(`character-${dialogue.characterIndex}`);
-              lineElement.textContent = `<div class="speaker">${scriptData.characters[dialogue.characterIndex-1]}:</div>${dialogue.line}`;
+              lineElement.innerHTML = `<div class="speaker">${scriptData.characters[dialogue.characterIndex-1]}:</div>${dialogue.line}`;
               sceneContainer.appendChild(lineElement);
             });
 
