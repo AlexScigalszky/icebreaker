@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radio Theatre Script</title>
+  <title>Radio Theatre Script Selector</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -34,68 +34,97 @@
     .character-3 { color: #2ecc71; }
     .character-4 { color: #f39c12; }
 
-    input {
-      margin-bottom: 10px;
-      padding: 5px;
-      font-size: 14px;
+    #jsonSelector {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      outline: none;
     }
 
     #create-btn {
-      padding: 10px 20px;
+      padding: 12px 24px;
       font-size: 16px;
-      background-color: #611;
+      background-color: #610;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin: 20px;
+    }
+    .form {
+        padding: 2rem;
     }
   </style>
 </head>
 <body>
 
-    <h1>Radio Theater</h1>
-  <div>
-    <label for="jsonInput">JSON Input:</label>
-    <input type="text" id="jsonInput" placeholder="Enter JSON">
-    <br>
+  <div class="form">
+    <label for="jsonSelector">Select JSON Script:</label>
+    <select id="jsonSelector"></select>
     <button id="create-btn" onclick="createScript()">Create</button>
   </div>
 
   <div id="script-container"></div>
 
   <script>
+    const scriptFiles = [
+      "4.json",
+      "4_simple.json",
+      "6.json"
+    ];
+
+    const jsonSelector = document.getElementById('jsonSelector');
+
+    scriptFiles.forEach((file, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = file;
+      jsonSelector.appendChild(option);
+    });
+
     function createScript() {
       const scriptContainer = document.getElementById('script-container');
-      const jsonInput = document.getElementById('jsonInput');
+      const selectedFileIndex = jsonSelector.value;
 
-      try {
-        const scriptData = JSON.parse(jsonInput.value);
-
-        scriptContainer.innerHTML = ''; // Limpiar el contenido anterior
-
-        scriptData.scenes.forEach((scene, index) => {
-          const sceneContainer = document.createElement('div');
-          sceneContainer.classList.add('scene-container');
-
-          const sceneTitle = document.createElement('h3');
-          sceneTitle.textContent = `Scene N° ${index + 1}: ${scene.title}`;
-          sceneContainer.appendChild(sceneTitle);
-
-          scene.dialogues.forEach((dialogue) => {
-            const lineElement = document.createElement('p');
-            lineElement.classList.add(`character-${dialogue.characterIndex}`);
-            lineElement.classList.add('character-line');
-            lineElement.textContent = `${scriptData.characters[dialogue.characterIndex - 1]}: ${dialogue.line}`;
-            sceneContainer.appendChild(lineElement);
-          });
-
-          scriptContainer.appendChild(sceneContainer);
-        });
-      } catch (error) {
-        console.error('Error parsing JSON:', error.message);
-        alert('Error parsing JSON. Please enter valid JSON data.');
+      if (selectedFileIndex === "") {
+        alert("Please select a JSON script.");
+        return;
       }
+
+      const selectedFile = scriptFiles[selectedFileIndex];
+      const filePath = `/${selectedFile}`; // Agrega la carpeta correcta si es necesario
+
+      fetch(filePath)
+        .then(response => response.json())
+        .then(scriptData => {
+          scriptContainer.innerHTML = '';
+
+          scriptData.scenes.forEach((scene, index) => {
+            const sceneContainer = document.createElement('div');
+            sceneContainer.classList.add('scene-container');
+
+            const sceneTitle = document.createElement('h3');
+            sceneTitle.textContent = `Escena N° ${index + 1}: ${scene.title}`;
+            sceneContainer.appendChild(sceneTitle);
+
+            scene.dialogues.forEach((dialogue) => {
+              const lineElement = document.createElement('p');
+              lineElement.classList.add(`character-${dialogue.characterIndex}`);
+              lineElement.classList.add('character-line');
+              lineElement.textContent = `${scriptData.characters[dialogue.characterIndex - 1]}: ${dialogue.line}`;
+              sceneContainer.appendChild(lineElement);
+            });
+
+            scriptContainer.appendChild(sceneContainer);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching JSON:', error.message);
+          alert('Error fetching JSON. Please try again.');
+        });
     }
   </script>
 
