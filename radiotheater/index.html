@@ -25,7 +25,6 @@
     }
 
     .character-line {
-      color: #fff;
       margin: 5px 0;
     }
 
@@ -33,6 +32,14 @@
     .character-2 { color: #e74c3c; }
     .character-3 { color: #2ecc71; }
     .character-4 { color: #f39c12; }
+    .character-5 { color: #9b59b6; }
+    .character-6 { color: #16a085; }
+    .character-7 { color: #c0392b; }
+    .character-8 { color: #d35400; }
+    .character-9 { color: #8e44ad; }
+    .character-10 { color: #27ae60; }
+    .character-11 { color: #2980b9; }
+    .character-12 { color: #e67e22; }
 
     #jsonSelector {
       padding: 10px;
@@ -73,7 +80,9 @@
     const scriptFiles = [
       "4.json",
       "4_simple.json",
-      "6.json"
+      "5.json",
+      "6.json",
+      "8.json"
     ];
 
     const jsonSelector = document.getElementById('jsonSelector');
@@ -102,6 +111,25 @@
         .then(scriptData => {
           scriptContainer.innerHTML = '';
 
+          // Presentación de personajes al principio
+          const charactersContainer = document.createElement('div');
+          charactersContainer.classList.add('scene-container');
+
+          const charactersTitle = document.createElement('h3');
+          charactersTitle.textContent = "Presentación de Personajes";
+          charactersContainer.appendChild(charactersTitle);
+
+          scriptData.characters.forEach((character, index) => {
+            const characterLine = document.createElement('p');
+            characterLine.classList.add('character-line');
+            characterLine.classList.add(`character-${index + 1}`);
+            characterLine.textContent = `${character}`;
+            charactersContainer.appendChild(characterLine);
+          });
+
+          scriptContainer.appendChild(charactersContainer);
+
+          // Escenas
           scriptData.scenes.forEach((scene, index) => {
             const sceneContainer = document.createElement('div');
             sceneContainer.classList.add('scene-container');
@@ -112,9 +140,9 @@
 
             scene.dialogues.forEach((dialogue) => {
               const lineElement = document.createElement('p');
-              lineElement.classList.add(`character-${dialogue.characterIndex}`);
               lineElement.classList.add('character-line');
-              lineElement.textContent = `${scriptData.characters[dialogue.characterIndex - 1]}: ${dialogue.line}`;
+              lineElement.classList.add(`character-${dialogue.characterIndex}`);
+              lineElement.textContent = `${dialogue.line}`;
               sceneContainer.appendChild(lineElement);
             });
 
