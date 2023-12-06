@@ -95,7 +95,7 @@
       }
 
       const selectedFile = scriptFiles[selectedFileIndex];
-      const filePath = `/${selectedFile}`; // Agrega la carpeta correcta si es necesario
+      const filePath = `${selectedFile}`; // Agrega la carpeta correcta si es necesario
 
       fetch(filePath)
         .then(response => response.json())
