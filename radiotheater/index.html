@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Theatre Script</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .scene-container {
+      max-width: 800px;
+      margin: auto;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .character-line {
+      color: #fff;
+      margin: 5px 0;
+    }
+
+    .character-1 { color: #3498db; }
+    .character-2 { color: #e74c3c; }
+    .character-3 { color: #2ecc71; }
+    .character-4 { color: #f39c12; }
+
+    input {
+      margin-bottom: 10px;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    #create-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #611;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+    <h1>Radio Theater</h1>
+  <div>
+    <label for="jsonInput">JSON Input:</label>
+    <input type="text" id="jsonInput" placeholder="Enter JSON">
+    <br>
+    <button id="create-btn" onclick="createScript()">Create</button>
+  </div>
+
+  <div id="script-container"></div>
+
+  <script>
+    function createScript() {
+      const scriptContainer = document.getElementById('script-container');
+      const jsonInput = document.getElementById('jsonInput');
+
+      try {
+        const scriptData = JSON.parse(jsonInput.value);
+
+        scriptContainer.innerHTML = ''; // Limpiar el contenido anterior
+
+        scriptData.scenes.forEach((scene, index) => {
+          const sceneContainer = document.createElement('div');
+          sceneContainer.classList.add('scene-container');
+
+          const sceneTitle = document.createElement('h3');
+          sceneTitle.textContent = `Scene N° ${index + 1}: ${scene.title}`;
+          sceneContainer.appendChild(sceneTitle);
+
+          scene.dialogues.forEach((dialogue) => {
+            const lineElement = document.createElement('p');
+            lineElement.classList.add(`character-${dialogue.characterIndex}`);
+            lineElement.classList.add('character-line');
+            lineElement.textContent = `${scriptData.characters[dialogue.characterIndex - 1]}: ${dialogue.line}`;
+            sceneContainer.appendChild(lineElement);
+          });
+
+          scriptContainer.appendChild(sceneContainer);
+        });
+      } catch (error) {
+        console.error('Error parsing JSON:', error.message);
+        alert('Error parsing JSON. Please enter valid JSON data.');
+      }
+    }
+  </script>
+
+</body>
+</html>
