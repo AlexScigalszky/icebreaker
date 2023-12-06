@@ -67,7 +67,7 @@
   </style>
 </head>
 <body>
-
+  <h1>Radio Theater</h1>
   <div class="form">
     <label for="jsonSelector">Select JSON Script:</label>
     <select id="jsonSelector"></select>
@@ -143,7 +143,7 @@
               const lineElement = document.createElement('p');
               lineElement.classList.add('character-line');
               lineElement.classList.add(`character-${dialogue.characterIndex}`);
-              lineElement.textContent = `${scriptData.characters[dialogue.characterIndex]}: ${dialogue.line}`;
+              lineElement.textContent = `${scriptData.characters[dialogue.characterIndex-1]}: ${dialogue.line}`;
               sceneContainer.appendChild(lineElement);
             });
 
