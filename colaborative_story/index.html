@@ -101,7 +101,7 @@
         fetch(filePath)
           .then((response) => response.json())
           .then((storyData) => {
-            const { values, template } = storyData;
+            const { inputs, story } = storyData;
             const resultElement = document.getElementById("result");
 
             let story = template;
