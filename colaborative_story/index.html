@@ -75,7 +75,9 @@
       const storySelector = document.getElementById("storySelector");
 
       const stories = [
-        "story1.json", // Agrega aquí otros nombres de archivos JSON según tus necesidades
+        "mystical_metropolis.json",
+        "fading_choes.json",
+        "ephemeral_symphony.json"
       ];
 
       stories.forEach((story, index) => {
@@ -94,7 +96,7 @@
         }
 
         const selectedStory = stories[selectedStoryIndex];
-        const filePath = `json/${selectedStory}`; // Agrega la carpeta correcta si es necesario
+        const filePath = `${selectedStory}`; // Agrega la carpeta correcta si es necesario
 
         fetch(filePath)
           .then((response) => response.json())
