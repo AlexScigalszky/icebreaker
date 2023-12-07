@@ -88,6 +88,7 @@
         option.textContent = story;
         storySelector.appendChild(option);
       });
+      var data;
 
       function loadStory() {
         const selectedStoryIndex = storySelector.value;
@@ -103,8 +104,8 @@
         fetch(filePath)
           .then((response) => response.json())
           .then((storyData) => {
-            var { inputs, story } = storyData;
-            inputs.forEach((input) => {
+            data = storyData;
+            data.inputs.forEach((input) => {
               const label = document.createElement("label");
               label.setAttribute("for", input.id);
               label.innerText = `${input.label}:`;
@@ -125,7 +126,8 @@
       }
       function showStory(){
         const resultElement = document.getElementById("result");
-        inputs.forEach((value, index) => {
+        var story = data.story;
+        data.inputs.forEach((value, index) => {
           const regex = new RegExp(`\\[${index + 1}\\]`, "g");
           story = story.replace(regex, `<span class="input-value">${value}</span>`);
         });
