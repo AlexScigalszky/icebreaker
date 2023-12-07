@@ -65,8 +65,10 @@
     <div id="form" class="form">
       <label for="storySelector">Select Story:</label>
       <select id="storySelector"></select>
+      <div id="input-container"></div>
 
       <button onclick="loadStory()">Load Story</button>
+      <button onclick="showStory()">Show Story</button>
     </div>
 
     <div id="result"></div>
@@ -96,27 +98,41 @@
         }
 
         const selectedStory = stories[selectedStoryIndex];
-        const filePath = `${selectedStory}`; // Agrega la carpeta correcta si es necesario
+        const filePath = `${selectedStory}`;
 
         fetch(filePath)
           .then((response) => response.json())
           .then((storyData) => {
             var { inputs, story } = storyData;
-            const resultElement = document.getElementById("result");
-
-            inputs.forEach((value, index) => {
-              const regex = new RegExp(`\\[${index + 1}\\]`, "g");
-              story = story.replace(regex, `<span class="input-value">${value}</span>`);
+            inputforEach((input) => {
+              const label = document.createElement("label");
+              label.setAttribute("for", input.id);
+              label.innerText = `${input.label}:`;
+      
+              const inputField = document.createElement("input");
+              inputField.setAttribute("type", "text");
+              inputField.setAttribute("id", input.id);
+              inputField.setAttribute("placeholder", input.default);
+      
+              form.appendChild(label);
+              form.appendChild(inputField);
             });
-
-            resultElement.innerHTML = story;
-            resultElement.style.display = "block";
-            document.getElementById("form").style.display = "none";
           })
           .catch((error) => {
             console.error("Error fetching JSON:", error.message);
             alert("Error fetching JSON. Please try again.");
           });
+      }
+      function showStory(){
+        const resultElement = document.getElementById("result");
+        inputs.forEach((value, index) => {
+          const regex = new RegExp(`\\[${index + 1}\\]`, "g");
+          story = story.replace(regex, `<span class="input-value">${value}</span>`);
+        });
+
+        resultElement.innerHTML = story;
+        resultElement.style.display = "block";
+        document.getElementById("form").style.display = "none";
       }
     </script>
   </body>
