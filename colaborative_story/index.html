@@ -110,6 +110,7 @@
           .then((response) => response.json())
           .then((storyData) => {
             data = storyData;
+            var inputContainer = document.getElementById("input-container");
             data.inputs.forEach((input) => {
               const label = document.createElement("label");
               label.setAttribute("for", input.id);
@@ -121,8 +122,8 @@
               inputField.setAttribute("placeholder", input.default);
               inputField.setAttribute("value", input.default);
       
-              form.appendChild(label);
-              form.appendChild(inputField);
+              inputContainer.appendChild(label);
+              inputContainer.appendChild(inputField);
             });
             document.getElementById("show-story").style.display = "block";
             
