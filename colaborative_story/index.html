@@ -101,7 +101,7 @@
         fetch(filePath)
           .then((response) => response.json())
           .then((storyData) => {
-            const { inputs, story } = storyData;
+            var { inputs, story } = storyData;
             const resultElement = document.getElementById("result");
 
             values.forEach((value, index) => {
