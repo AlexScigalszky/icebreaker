@@ -132,7 +132,7 @@
         var story = data.story;
         data.inputs.forEach((value, index) => {
           const regex = new RegExp(`\\{${value.id}\\}`, "g");
-          story = story.replace(regex, `<span class="input-value">${value}</span>`);
+          story = story.replace(regex, `<span class="input-value">${document.getElementById(value.id).value ?? value.default}</span>`);
         });
 
         resultElement.innerHTML = story;
