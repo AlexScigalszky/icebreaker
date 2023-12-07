@@ -104,8 +104,6 @@
             const { inputs, story } = storyData;
             const resultElement = document.getElementById("result");
 
-            let story = template;
-
             values.forEach((value, index) => {
               const regex = new RegExp(`\\[${index + 1}\\]`, "g");
               story = story.replace(regex, `<span class="input-value">${value}</span>`);
