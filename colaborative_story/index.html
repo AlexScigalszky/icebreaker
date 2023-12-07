@@ -104,7 +104,7 @@
           .then((response) => response.json())
           .then((storyData) => {
             var { inputs, story } = storyData;
-            inputforEach((input) => {
+            input.forEach((input) => {
               const label = document.createElement("label");
               label.setAttribute("for", input.id);
               label.innerText = `${input.label}:`;
