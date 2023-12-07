@@ -65,9 +65,9 @@
     <div id="form" class="form">
       <label for="storySelector">Select Story:</label>
       <select id="storySelector"></select>
-      <div id="input-container"></div>
-
       <button onclick="loadStory()">Load Story</button>
+      
+      <div id="input-container"></div>
       
     </div>
 
@@ -115,6 +115,7 @@
               inputField.setAttribute("type", "text");
               inputField.setAttribute("id", input.id);
               inputField.setAttribute("placeholder", input.default);
+              inputField.setAttribute("value", value.default);
       
               form.appendChild(label);
               form.appendChild(inputField);
