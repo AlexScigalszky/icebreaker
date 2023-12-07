@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Person Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #610;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #3498db;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <label for="inputNames">Enter Names (comma-separated):</label>
+  <input type="text" id="inputNames" placeholder="Alice, Bob, Charlie, ...">
+
+  <button onclick="selectRandomPerson()">Select Random Person</button>
+
+  <div id="result"></div>
+
+  <script>
+    function selectRandomPerson() {
+      const inputNames = document.getElementById("inputNames").value.toUpperCase();
+      let people = inputNames.split(",").map(name => name.trim());
+
+      if (people.length === 0 || (people.length === 1 && people[0] === "")) {
+        alert("Please enter at least one name.");
+        return;
+      }
+
+      const randomIndex = Math.floor(Math.random() * people.length);
+      const selectedPerson = people[randomIndex];
+
+      // Remove the selected person from the list
+      people = people.filter((_, index) => index !== randomIndex);
+
+      document.getElementById("result").innerHTML = `Selected Person: ${selectedPerson}`;
+      document.getElementById("result").style.display = "block";
+      document.getElementById("inputNames").value = people.join(", ");
+    }
+  </script>
+
+</body>
+</html>
