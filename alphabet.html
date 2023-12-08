@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Collection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      text-transform: uppercase;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #610;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #3498db;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="wordForm">
+    <label for="wordA">A:</label>
+    <input type="text" id="wordA">
+
+    <label for="wordB">B:</label>
+    <input type="text" id="wordB">
+
+    <label for="wordC">C:</label>
+    <input type="text" id="wordC">
+
+    <label for="wordD">D:</label>
+    <input type="text" id="wordD">
+
+    <label for="wordE">E:</label>
+    <input type="text" id="wordE">
+
+    <label for="wordF">F:</label>
+    <input type="text" id="wordF">
+
+    <label for="wordG">G:</label>
+    <input type="text" id="wordG">
+
+    <label for="wordH">H:</label>
+    <input type="text" id="wordH">
+
+    <label for="wordI">I:</label>
+    <input type="text" id="wordI">
+
+    <label for="wordJ">J:</label>
+    <input type="text" id="wordJ">
+
+    <label for="wordK">K:</label>
+    <input type="text" id="wordK">
+
+    <label for="wordL">L:</label>
+    <input type="text" id="wordL">
+
+    <label for="wordM">M:</label>
+    <input type="text" id="wordM">
+
+    <label for="wordN">N:</label>
+    <input type="text" id="wordN">
+
+    <label for="wordO">O:</label>
+    <input type="text" id="wordO">
+
+    <label for="wordP">P:</label>
+    <input type="text" id="wordP">
+
+    <label for="wordQ">Q:</label>
+    <input type="text" id="wordQ">
+
+    <label for="wordR">R:</label>
+    <input type="text" id="wordR">
+
+    <label for="wordS">S:</label>
+    <input type="text" id="wordS">
+
+    <label for="wordT">T:</label>
+    <input type="text" id="wordT">
+
+    <label for="wordU">U:</label>
+    <input type="text" id="wordU">
+
+    <label for="wordV">V:</label>
+    <input type="text" id="wordV">
+
+    <label for="wordW">W:</label>
+    <input type="text" id="wordW">
+
+    <label for="wordX">X:</label>
+    <input type="text" id="wordX">
+
+    <label for="wordY">Y:</label>
+    <input type="text" id="wordY">
+
+    <label for="wordZ">Z:</label>
+    <input type="text" id="wordZ">
+
+    <button type="button" onclick="collectWords()">Collect Words</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function collectWords() {
+      const wordA = document.getElementById("wordA").value;
+      const wordB = document.getElementById("wordB").value;
+      const wordC = document.getElementById("wordC").value;
+      const wordD = document.getElementById("wordD").value;
+      const wordE = document.getElementById("wordE").value;
+      const wordF = document.getElementById("wordF").value;
+      const wordG = document.getElementById("wordG").value;
+      const wordH = document.getElementById("wordH").value;
+      const wordI = document.getElementById("wordI").value;
+      const wordJ = document.getElementById("wordJ").value;
+      const wordK = document.getElementById("wordK").value;
+      const wordL = document.getElementById("wordL").value;
+      const wordM = document.getElementById("wordM").value;
+      const wordN = document.getElementById("wordN").value;
+      const wordO = document.getElementById("wordO").value;
+      const wordP = document.getElementById("wordP").value;
+      const wordQ = document.getElementById("wordQ").value;
+      const wordR = document.getElementById("wordR").value;
+      const wordS = document.getElementById("wordS").value;
+      const wordT = document.getElementById("wordT").value;
+      const wordU = document.getElementById("wordU").value;
+      const wordV = document.getElementById("wordV").value;
+      const wordW = document.getElementById("wordW").value;
+      const wordX = document.getElementById("wordX").value;
+      const wordY = document.getElementById("wordY").value;
+      const wordZ = document.getElementById("wordZ").value;
+
+      const result = `Words Collected:
+        A: ${wordA}
+        B: ${wordB}
+        C: ${wordC}
+        D: ${wordD}
+        E: ${wordE}
+        F: ${wordF}
+        G: ${wordG}
+        H: ${wordH}
+        I: ${wordI}
+        J: ${wordJ}
+        K: ${wordK}
+        L: ${wordL}
+        M: ${wordM}
+        N: ${wordN}
+        O: ${wordO}
+        P: ${wordP}
+        Q: ${wordQ}
+        R: ${wordR}
+        S: ${wordS}
+        T: ${wordT}
+        U: ${wordU}
+        V: ${wordV}
+        W: ${wordW}
+        X: ${wordX}
+        Y: ${wordY}
+        Z: ${wordZ}
+      `;
+
+      document.getElementById("result").innerHTML = result;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
