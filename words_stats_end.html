@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Restriction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      text-transform: uppercase;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #610;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #3498db;
+      display: none;
+    }
+
+    .red {
+      color: #f44;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="wordForm">
+    <label id="work-label" for="word">Word:</label>
+    <input type="text" id="word">
+    <button type="button" onclick="restrictNextWord()">Add Word</button>
+  </form>
+
+  <div id="result"></div>
+
+  <div id="result-list"></div>
+
+  <script>
+    let lastLetter = "";
+
+    function restrictNextWord() {
+      const wordInput = document.getElementById("word");
+      const word = wordInput.value.toUpperCase();
+
+      // Check if the word starts with the same letter as the previous one
+      if (word.length > 0 && (word[0] === lastLetter || lastLetter ==='')) {
+        // Display the result
+        document.getElementById("result").innerText = `Word added: ${word}`;
+        document.getElementById("result").style.display = "block";
+
+        // Update the lastLetter variable for the next word
+        lastLetter = word[word.length - 1];
+        document.getElementById('work-label').innerText = `Word that starts with ${lastLetter}:`;
+
+        document.getElementById('result-list').innerHTML += `<p>${word}</p>`;
+        // Clear the input field
+        wordInput.value = "";
+      } else {
+        alert("The word must start with the same letter as the previous one.");
+      }
+    }
+  </script>
+
+</body>
+</html>
