@@ -1,5 +1,5 @@
 {
-    "imageSrc": "men.jpeg",
+    "imageSrc": "men.png",
     "parts": [
         {
             "name": "Head",
@@ -74,7 +74,7 @@
         {
             "name": "Big toe",
             "position": {
-                "top": 442,
+                "top": 452,
                 "left": 53
             }
         },
