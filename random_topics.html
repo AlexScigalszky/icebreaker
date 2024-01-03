@@ -33,6 +33,23 @@
     </div>
 
     <script>
+        // tests begin
+        if (window.DeviceMotionEvent) {
+            window?.addEventListener('devicemotion', function(event) {
+                var acceleration = event.acceleration;
+                var accelerationIncludingGravity = event.accelerationIncludingGravity;
+                var rotationRate = event.rotationRate;
+        
+                // Accede a los datos del acelerómetro según sea necesario
+                console.log('Aceleración:', acceleration);
+                console.log('Aceleración con gravedad:', accelerationIncludingGravity);
+                console.log('Tasa de rotación:', rotationRate);
+            });
+        } else {
+            console.log('El dispositivo no admite la API de DeviceMotion.');
+        }
+        // tests end
+                
         // Array of icebreaker questions
         const icebreakerQuestions = [
             'Do you fold your pizza?',
